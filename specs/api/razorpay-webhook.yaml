@@ -1,0 +1,33 @@
+openapi: "3.0.1"
+info:
+  title: Razorpay Webhook Contract
+  version: 1.0.0
+  description: Minimal webhook contract for receiving Razorpay events. Validate `X-Razorpay-Signature` header using your webhook secret.
+paths:
+  /webhooks/razorpay:
+    post:
+      summary: Razorpay webhook endpoint
+      description: Receives Razorpay event webhooks. Validate signature header `X-Razorpay-Signature` and respond with 200 on success.
+      parameters:
+        - name: X-Razorpay-Signature
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              event: payment.captured
+              payload:
+                payment:
+                  id: pay_ABC123
+                  amount: 123456
+      responses:
+        '200':
+          description: acknowledged
+        '400':
+          description: invalid signature or malformed payload

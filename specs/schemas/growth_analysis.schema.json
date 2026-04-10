@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "growth_analysis",
+  "type": "object",
+  "properties": {
+    "overall": {
+      "type": "object",
+      "properties": {
+        "score": { "type": "number", "minimum": 0, "maximum": 5 },
+        "label": { "type": "string" },
+        "summary": { "type": "string" }
+      },
+      "required": ["score"]
+    },
+    "engines": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "title": { "type": "string" }, "description": { "type": "string" } }, "required": ["title"] }
+    },
+    "india_themes_present": { "type": "array", "items": { "type": "string" } },
+    "scorecards": {
+      "type": "object",
+      "properties": {
+        "industry_tailwinds": {
+          "type": "object",
+          "properties": {
+            "scale": { "type": "string" },
+            "summary": { "type": "string" },
+            "details": { "type": "array", "items": { "type": "object", "properties": { "title": { "type": "string" }, "description": { "type": "string" } }, "required": ["title", "description"] }, "minItems": 3, "maxItems": 3 }
+          }
+        },
+        "optionality": {
+          "type": "object",
+          "properties": {
+            "scale": { "type": "string" },
+            "summary": { "type": "string" },
+            "details": { "type": "array", "items": { "type": "object", "properties": { "title": { "type": "string" }, "description": { "type": "string" } }, "required": ["title", "description"] }, "minItems": 3, "maxItems": 3 }
+          }
+        }
+      }
+    }
+  },
+  "required": ["overall"]
+}

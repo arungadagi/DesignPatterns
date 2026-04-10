@@ -1,0 +1,21 @@
+{
+  "name": "trigger-requirements-review",
+  "description": "Non-blocking hook: when the requirements-generator agent finishes successfully, invoke the requirements-review agent in read-only mode to produce a gap analysis and traceability report.",
+  "event": "AgentRunCompleted",
+  "trigger_agent": "requirements-generator",
+  "condition": {
+    "status": "success"
+  },
+  "action": {
+    "type": "invoke_agent",
+    "agent": "requirements-review",
+    "mode": "read-only",
+    "input_sources": ["prd.md", "SRS.md", "requirement.md"],
+    "output_target": ".github/hooks/logs/requirements-review-output.md",
+    "notify": {
+      "channels": ["chat"],
+      "message": "requirements-review triggered after requirements-generator completed"
+    }
+  },
+  "blocking": false
+}

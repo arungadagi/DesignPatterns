@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "interest_assessment",
+  "type": "object",
+  "properties": {
+    "composite_score": { "type": "number" },
+    "final_decision": { "type": "string", "enum": ["Pass", "Watch", "Accumulate", "Buy"] },
+    "module_scores": { "type": "object", "additionalProperties": { "type": "number" } }
+  },
+  "required": ["composite_score", "final_decision"]
+}

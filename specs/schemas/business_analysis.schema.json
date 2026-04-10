@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "business_analysis",
+  "type": "object",
+  "properties": {
+    "ticker": { "type": "string" },
+    "company_name": { "type": "string" },
+    "is_psu": { "type": "boolean" },
+    "promoter_held_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+    "management_type": { "type": "string", "enum": ["Promoter-led", "Professionally-managed", "Mixed", "Unknown"] },
+    "revenue_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "segment": { "type": "string" },
+          "percentage": { "type": "number" },
+          "description": { "type": "string" }
+        },
+        "required": ["segment"]
+      }
+    },
+    "products": { "type": "array", "items": { "type": "string" } },
+    "customers": { "type": "array", "items": { "type": "string" } },
+    "geography": { "type": "array", "items": { "type": "object", "properties": { "region": { "type": "string" }, "percentage": { "type": "number" } } } },
+    "predictability": { "type": "object", "properties": { "rating": { "type": "string" }, "rationale": { "type": "string" } } },
+    "pricing_power": { "type": "object", "properties": { "rating": { "type": "string" }, "rationale": { "type": "string" } } },
+    "recession_proof": { "type": "object", "properties": { "rating": { "type": "string" }, "rationale": { "type": "string" } } },
+    "competitive_position": { "type": "object" }
+  },
+  "required": ["ticker", "company_name"]
+}

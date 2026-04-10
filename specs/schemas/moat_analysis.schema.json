@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "moat_analysis",
+  "type": "object",
+  "properties": {
+    "overall": {
+      "type": "object",
+      "properties": {
+        "score": { "type": "number", "minimum": 0, "maximum": 5 },
+        "direction": { "type": "string" }
+      }
+    },
+    "psu_regulatory_moat": { "type": "boolean" },
+    "distribution_moat": { "type": "boolean" },
+    "sources": {
+      "type": "object",
+      "properties": {
+        "switching_costs": { "$ref": "#/definitions/moat_source" },
+        "intangible_assets": { "$ref": "#/definitions/moat_source" },
+        "network_effects": { "$ref": "#/definitions/moat_source" },
+        "low_cost_production": { "$ref": "#/definitions/moat_source" },
+        "counter_positioning": { "$ref": "#/definitions/moat_source" }
+      }
+    }
+  },
+  "definitions": {
+    "moat_source": {
+      "type": "object",
+      "properties": {
+        "scale": { "type": "string", "enum": ["NONE", "WEAK", "STRONG"] },
+        "summary": { "type": "string" },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string" },
+              "description": { "type": "string" }
+            },
+            "required": ["title", "description"]
+          },
+          "minItems": 3,
+          "maxItems": 3
+        }
+      }
+    }
+  },
+  "required": ["overall"]
+}

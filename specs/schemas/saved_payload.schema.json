@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "saved_payload",
+  "type": "object",
+  "properties": {
+    "user_id": { "type": "string" },
+    "ticker": { "type": "string" },
+    "company_name": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "current_price": { "type": "number" },
+    "composite_score": { "type": "number" },
+    "user_thesis": {
+      "type": "object",
+      "properties": {
+        "business_vote": { "type": "number" },
+        "phase_vote": { "type": "string" },
+        "moat_size_vote": { "type": "number" },
+        "moat_direction_vote": { "type": "number" },
+        "growth_vote": { "type": "number" },
+        "management_vote": { "type": "number" },
+        "risk_vote": { "type": "number" },
+        "valuation_vote": { "type": "number" }
+      }
+    },
+    "final_decision": { "type": "string" },
+    "modules": { "type": "object" },
+    "raw_ai_output": { "type": "string" },
+    "user_votes": { "type": "object" }
+  },
+  "required": ["user_id", "ticker", "timestamp", "final_decision"]
+}

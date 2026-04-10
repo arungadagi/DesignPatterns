@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^cmake -S C:\\\\MyData\\\\Designpatterns\\\\creational\\\\factory\\\\example -B C:\\\\MyData\\\\Designpatterns\\\\creational\\\\factory\\\\example\\\\build ; cmake --build C:\\\\MyData\\\\Designpatterns\\\\creational\\\\factory\\\\example\\\\build --target test_factory_c --config Debug ; C:\\\\MyData\\\\Designpatterns\\\\creational\\\\factory\\\\example\\\\build\\\\test_factory_c\\.exe$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

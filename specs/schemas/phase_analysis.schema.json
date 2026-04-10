@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "phase_analysis",
+  "type": "object",
+  "properties": {
+    "current_stage": { "type": "string" },
+    "confidence_level": { "type": "string", "enum": ["High", "Medium", "Low"] },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "in_transition": { "type": "boolean" },
+    "transition_direction": { "type": "string" },
+    "useful_valuation_methods": { "type": "array", "items": { "type": "string" } },
+    "methods_to_avoid": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["current_stage"]
+}

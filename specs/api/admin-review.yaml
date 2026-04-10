@@ -1,0 +1,44 @@
+openapi: "3.0.1"
+info:
+  title: Admin Review API
+  version: 1.0.0
+  description: API for listing and reprocessing flagged AI outputs in the admin review queue.
+paths:
+  /admin/review/flagged:
+    get:
+      summary: List flagged items
+      responses:
+        '200':
+          description: list of flagged items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    ticker:
+                      type: string
+                    validation_status:
+                      type: string
+                    reason:
+                      type: string
+  /admin/review/reprocess:
+    post:
+      summary: Reprocess a flagged item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+      responses:
+        '200':
+          description: reprocessing scheduled
+        '404':
+          description: item not found

@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "risk_analysis",
+  "type": "object",
+  "properties": {
+    "overall": {
+      "type": "object",
+      "properties": {
+        "score_value": { "type": "number", "minimum": 0, "maximum": 5 },
+        "score_label": { "type": "string" },
+        "summary": { "type": "string" },
+        "evidence": { "type": "array", "items": { "type": "object", "properties": { "title": { "type": "string" }, "description": { "type": "string" } } } }
+      }
+    },
+    "scorecards": {
+      "type": "object",
+      "properties": {
+        "concentration": { "type": "object", "properties": { "scale": { "type": "string" }, "summary": { "type": "string" }, "details": { "type": "array", "items": { "type": "object", "properties": { "title": { "type": "string" }, "description": { "type": "string" } }, "required": ["title", "description"] }, "minItems": 3, "maxItems": 3 } } },
+        "disruption": { "type": "object", "properties": { "scale": { "type": "string" }, "summary": { "type": "string" }, "details": { "type": "array", "items": { "type": "object", "properties": { "title": { "type": "string" }, "description": { "type": "string" } }, "required": ["title", "description"] }, "minItems": 3, "maxItems": 3 } } },
+        "outside_forces": { "type": "object", "properties": { "scale": { "type": "string" }, "summary": { "type": "string" }, "details": { "type": "array", "items": { "type": "object", "properties": { "title": { "type": "string" }, "description": { "type": "string" } }, "required": ["title", "description"] }, "minItems": 3, "maxItems": 3 } } },
+        "financial_health": { "type": "object", "properties": { "scale": { "type": "string" }, "summary": { "type": "string" }, "details": { "type": "array", "items": { "type": "object", "properties": { "title": { "type": "string" }, "description": { "type": "string" } }, "required": ["title", "description"] }, "minItems": 3, "maxItems": 3 } } }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "trigger-requirements-generator",
+  "description": "Non-blocking hook: when the requirements-review agent finishes successfully, invoke the requirements-generator agent to produce suggested requirements and acceptance tests that address the review points.",
+  "event": "AgentRunCompleted",
+  "trigger_agent": "requirements-review",
+  "condition": {
+    "status": "success"
+  },
+  "action": {
+    "type": "invoke_agent",
+    "agent": "requirements-generator",
+    "mode": "auto",
+    "input_sources": [
+      ".github/hooks/logs/requirements-review-output.md",
+      "prd.md",
+      "SRS.md",
+      "requirement.md"
+    ],
+    "output_target": ".github/hooks/logs/requirements-generator-output.md",
+    "params": {
+      "address_review_points": true,
+      "create_follow_up_tickets": true
+    },
+    "notify": {
+      "channels": ["chat"],
+      "message": "requirements-generator triggered after requirements-review completed"
+    }
+  },
+  "blocking": false
+}
